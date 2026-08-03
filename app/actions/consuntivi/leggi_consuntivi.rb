@@ -6,10 +6,8 @@ module ConsuntiviActions
   ##
   # Legge i consuntivi che ha scaricato via FTP da scada
   #
-  # <div class="lsp">
-  #   <h2>Promises:</h2>
-  #   - consuntivi (Array) consuntivi di Steg letti dai file scaricati via FTP<br>
-  # </div>
+  # **Promises:**
+  # - `consuntivi` (`Array`) consuntivi di Steg letti dai file scaricati via FTP
   #
   #
   class LeggiConsuntivi

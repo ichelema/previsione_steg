@@ -6,12 +6,11 @@ module ReportActions
   ##
   # Setto il path della directory dove andare a salvare i PDF
   #
-  # <div class="lsp">
-  #   <h2>Expects:</h2>
-  #   - env (Hash) Enviroment Application<br>
-  #   <h2>Promises:</h2>
-  #   - path (String) Path dei file pdf<br>
-  # </div>
+  # **Expects:**
+  # - `env` (`Hash`) Enviroment Application
+  #
+  # **Promises:**
+  # - `path` (`String`) Path dei file pdf
   #
   class GetPath
     # @!parse

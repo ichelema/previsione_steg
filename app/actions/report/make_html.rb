@@ -6,10 +6,8 @@ module ReportActions
   ##
   # Crea l'HTML da inserire nel body dell'e-mail
   #
-  # <div class="lsp">
-  #   <h2>Promises:</h2>
-  #   - html (String) html da inserire del body dell'e-mail<br>
-  # </div>
+  # **Promises:**
+  # - `html` (`String`) html da inserire del body dell'e-mail
   #
   class MakeHtml
     # @!parse

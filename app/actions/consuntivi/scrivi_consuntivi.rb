@@ -6,10 +6,8 @@ module ConsuntiviActions
   ##
   # Scrivi i consuntivi letti del file del DB
   #
-  # <div class="lsp">
-  #   <h2>Expects:</h2>
-  #   - consuntivi (Array) consuntivi di Steg letti dai file scaricati via FTP<br>
-  # </div>
+  # **Expects:**
+  # - `consuntivi` (`Array`) consuntivi di Steg letti dai file scaricati via FTP
   #
   class ScriviConsuntivi
     # @!parse

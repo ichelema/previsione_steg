@@ -6,10 +6,8 @@ module ShareActions
   ##
   # Refresha i collegamenti del file Excel forecast
   #
-  # <div class="lsp">
-  #   <h2>Expects:</h2>
-  #   - excel (WIN32OLE)<br>
-  # </div>
+  # **Expects:**
+  # - `excel` (`WIN32OLE`)
   #
   class RefreshLinks
     # @!parse

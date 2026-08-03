@@ -6,10 +6,8 @@ module ReportActions
   ##
   # Faccio il printscreen di scada
   #
-  # <div class="lsp">
-  #   <h2>Promises:</h2>
-  #   - path_printscreen_scada (String) Path del printscreen di scada<br>
-  # </div>
+  # **Promises:**
+  # - `path_printscreen_scada` (`String`) Path del printscreen di scada
   #
   class PrintScreenScada
     # @!parse

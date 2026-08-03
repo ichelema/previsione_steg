@@ -6,10 +6,8 @@ module ForecastActions
   ##
   # Prendo da excel tutti i dati di input per eseguire il Forecast
   #
-  # <div class="lsp">
-  #   <h2>Promises:</h2>
-  #   - params (Hash) parametri letti da excel per eseguire il forecast<br>
-  # </div>
+  # **Promises:**
+  # - `params` (`Hash`) parametri letti da excel per eseguire il forecast
   #
   class GetExcelParams
     # @!parse

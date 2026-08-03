@@ -6,10 +6,8 @@ module ShareActions
   ##
   # Setta nel file excel la data e la salva nella variabile data
   #
-  # <div class="lsp">
-  #   <h2>Promises:</h2>
-  #   - data (String) Contiene data e ora del forecast da eseguire<br>
-  # </div>
+  # **Promises:**
+  # - `data` (`String`) Contiene data e ora del forecast da eseguire
   #
   class SetExcelDay
     # @!parse

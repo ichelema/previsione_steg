@@ -6,12 +6,11 @@ module ForecastActions
   ##
   # Prendo dal db tutti i dati consuntivi
   #
-  # <div class="lsp">
-  #   <h2>Promises:</h2>
-  #   - consuntivi (Array(Hash)) Consuntivi di Steg<br>
-  #   <h2>Expects:</h2>
-  #   - excel (WIN32OLE)<br>
-  # </div>
+  # **Promises:**
+  # - `consuntivi` (`Array<Hash>`) Consuntivi di Steg
+  #
+  # **Expects:**
+  # - `excel` (`WIN32OLE`)
   #
   class ReadDb
     # @!parse

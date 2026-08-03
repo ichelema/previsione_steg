@@ -6,10 +6,8 @@ module ReportActions
   ##
   # Chiama una funzione Excel per salvare su PDF lo sheet Forecast
   #
-  # <div class="lsp">
-  #   <h2>Expects:</h2>
-  #   - path_pdf_report (String) Path dove salvare il PDF<br>
-  # </div>
+  # **Expects:**
+  # - `path_pdf_report` (`String`) Path dove salvare il PDF
   #
   class SavePdf
     # @!parse

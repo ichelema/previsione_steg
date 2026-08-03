@@ -6,13 +6,12 @@ module ForecastActions
   ##
   # Filtro i consuntivi letti dal DB in base ai filtri impostati nell'Excel
   #
-  # <div class="lsp">
-  #   <h2>Expects:</h2>
-  #   - consuntivi (Array(Hash)) Consuntivi di Steg letti dal DB<br>
-  #   - params (Array(Hash)) Parametri letti da excel<br>
-  #   <h2>Promises:</h2>
-  #   - filtered_data (FunctionalLightService::Result) Se finisce con successo (Array(Hash))<br>
-  # </div>
+  # **Expects:**
+  # - `consuntivi` (`Array<Hash>`) Consuntivi di Steg letti dal DB
+  # - `params` (`Array<Hash>`) Parametri letti da excel
+  #
+  # **Promises:**
+  #   - filtered_data (FunctionalLightService::Result) Se finisce con successo (Array(Hash))
   #
   class FilterData
     # @!parse
@@ -58,7 +57,7 @@ module ForecastActions
     #       ]
     #
     #   @return [FunctionalLightService::Context]
-    executed do |ctx|
+    ted do |ctx|
       ctx.filtered_data = Success(ctx.consuntivi) \
                      >> method(:filter_giorno) \
                      >> method(:filter_festivo) \
