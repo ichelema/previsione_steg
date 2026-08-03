@@ -46,7 +46,7 @@ class ReportController < Ikigai::BaseController
   def self.call(env:)
     # @type [FunctionalLightService::Context]
     result = with(env: env).reduce(steps)
-    err_datail_enabled = env.dig(:global_options, :verbose) > "0"
+    err_datail_enabled = env.dig(:global_options, :verbose).to_s > "0"
     check_result(result, detail: err_datail_enabled)
     nil
   rescue => e

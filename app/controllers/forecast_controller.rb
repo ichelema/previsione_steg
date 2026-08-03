@@ -48,7 +48,7 @@ class ForecastController < Ikigai::BaseController
   def self.call(env:)
     # @type [FunctionalLightService::Context]
     result = with(env: env).reduce(steps)
-    err_datail_enabled = env.dig(:global_options, :verbose) > "0"
+    err_datail_enabled = env.dig(:global_options, :verbose).to_s > "0"
     check_result(result, detail: err_datail_enabled)
     nil
   rescue => e
@@ -161,19 +161,20 @@ class ForecastController < Ikigai::BaseController
   def self.steps
     # rubocop:disable Layout/ExtraSpacing
     [
-      SetExcelDay,          # E:[]                                                                                   P:[data]
-      GetExcelParams,       # E:[],                                                                                  P:[params]
-      RefreshLinks,         # E:[excel]                                                                              P:[]
-      ReadDb,               # E:[excel]                                                                              P:[consuntivi]
-      FilterData,           # E:[consuntivi, params]                                                                 P:[filtered_data]
-      GroupByHour,          # E:[filtered_data]                                                                      P:[filtered_data_group_by_hour]
-      Previsione,           # E:[filtered_data_group_by_hour]                                                        P:[previsione]
-      GoalNomination,       # E:[filtered_data_group_by_hour]                                                        P:[previsione]
-      PrevisionLimit,       # E:[previsione,filtered_data_group_by_hour, data]                                       P:[previsone_up, previsone_down]
-      Dispersione,          # E:[filtered_data_group_by_hour, previsione, previsione_down, data]                     P:[dispersione]
-      DailyEvolution,       # E:[workbook]                                                                           P:[daily_evolution]
+      ConnectExcel,         # E:[], P:[excel, workbook]
+      SetExcelDay,          # E:[], P:[data]
+      GetExcelParams,       # E:[], P:[params]
+      RefreshLinks,         # E:[excel], P:[]
+      ReadDb,               # E:[excel], P:[consuntivi]
+      FilterData,           # E:[consuntivi, params], P:[filtered_data]
+      GroupByHour,          # E:[filtered_data], P:[filtered_data_group_by_hour]
+      Previsione,           # E:[filtered_data_group_by_hour], P:[previsione]
+      GoalNomination,       # E:[], P:[]
+      PrevisionLimit,       # E:[previsione,filtered_data_group_by_hour, data], P:[previsone_up, previsone_down]
+      Dispersione,          # E:[filtered_data_group_by_hour, previsione, previsione_down, data], P:[dispersione]
+      DailyEvolution,       # E:[workbook], P:[daily_evolution]
       CompilaForecastExcel, # E:[previsione, previsione_up, previsione_down, dispersione, daily_evolution, workbook] P:[]
-      SaveHistory           # E:[daily_evolution]                                                                    P:[]
+      SaveHistory           # E:[daily_evolution], P:[]
     ]
     # rubocop:enable Layout/ExtraSpacing
   end
