@@ -6,10 +6,8 @@ module ReportActions
   ##
   # Setto il path dove prendere il PDF del vecchio forecast
   #
-  # <div class="lsp">
-  #   <h2>Promises:</h2>
-  #   - path_pdf_old_report (String) Path del pdf dell'ultimo report creato dal vecchio forecast<br>
-  # </div>
+  # **Promises:**
+  # - `path_pdf_old_report` (`String`) Path del pdf dell'ultimo report creato dal vecchio forecast
   #
   class PathPdfOldForecast
     # @!parse

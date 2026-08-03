@@ -6,11 +6,9 @@ module ReportActions
   ##
   # Mi connetto al file Excel del forecast
   #
-  # <div class="lsp">
-  #   <h2>Promises:</h2>
-  #   - excel (WIN32OLE)<br>
-  #   - workbook (WIN32OLE)<br>
-  # </div>
+  # **Promises:**
+  # - `excel` (`WIN32OLE`)
+  # - `workbook` (`WIN32OLE`)
   #
   class ConnectExcel
     # @!parse

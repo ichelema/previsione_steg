@@ -5,10 +5,8 @@
 module ForecastActions
   # Salvo nel database la previsione corrente
   #
-  # <div class="lsp">
-  #   <h2>Expects:</h2>
-  #   - daily_evolution (Hash) contiene previsione corrente<br>
-  # </div>
+  # **Expects:**
+  # - `daily_evolution` (`Hash`) contiene previsione corrente
   #
   class SaveHistory
     # @!parse

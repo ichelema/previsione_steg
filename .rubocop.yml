@@ -6,9 +6,11 @@ inherit_mode:
   merge:
     - Exclude
 
-require:
+plugins:
   # Performance cops are bundled with Standard
   - rubocop-performance
+
+require:
   # Standard's config uses this custom cop,
   # so it must be loaded
   - standard

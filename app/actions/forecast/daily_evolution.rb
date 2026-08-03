@@ -6,12 +6,11 @@ module ForecastActions
   ##
   # Prendo i valori della previsione corrente per copiarli nella tabella daily evolution del forecast
   #
-  # <div class="lsp">
-  #   <h2>Expects:</h2>
-  #   - workbook (WIN32OLE)<br>
-  #   <h2>Promises:</h2>
-  #   - daily_evolution (Hash) Previsione corrente<br>
-  # </div>
+  # **Expects:**
+  # - `workbook` (`WIN32OLE`)
+  #
+  # **Promises:**
+  # - `daily_evolution` (`Hash`) Previsione corrente
   #
   #
   class DailyEvolution

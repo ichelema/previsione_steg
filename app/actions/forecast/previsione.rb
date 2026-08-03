@@ -5,12 +5,11 @@
 module ForecastActions
   # Esegue la media ponderata dei dati filtrati nelo step precedente e crea la mia previsione
   #
-  # <div class="lsp">
-  #   <h2>Expects:</h2>
-  #   - filtered_data_group_by_hour (Hash(Array)) Consuntivi filtrati raggraupati per ora<br>
-  #   <h2>Promises:</h2>
-  #   - previsione (Hash(Array)) Mette in un hash la mia previsione ogni chiave dell'Hash è una stazione<br>
-  # </div>
+  # **Expects:**
+  # - `filtered_data_group_by_hour` (`Hash<Array>`) Consuntivi filtrati raggraupati per ora
+  #
+  # **Promises:**
+  # - `previsione` (`Hash<Array>`) Mette in un hash la mia previsione ogni chiave dell'Hash è una stazione
   #
   class Previsione
     # @!parse

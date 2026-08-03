@@ -5,15 +5,14 @@
 module ForecastActions
   # Calcolo la dispersione delle curve sugli anni, come si distribuiscono le curve sui vari anni
   #
-  # <div class="lsp">
-  #   <h2>Expects:</h2>
-  #   - filtered_data_group_by_hour (Hash(Array)) Consuntivi filtrati raggraupati per ora<br>
-  #   - previsione_up (Hash(Array)) contiene tutte le curve suddivise per stazione che sono sopra la mia previsione<br>
-  #   - previsione_down (Hash(Array)) contiene tutte le curve suddivise per stazione che sono sotto la mia previsione<br>
-  #   - data (String) Contiene data e ora del forecast da eseguire<br>
-  #   <h2>Promises:</h2>
-  #   - dispersione (Hash(Array)) Mette in un hash la mia disperzione, nel quale ogni chiave e un anno, e i valori sono un array con tutti le curve relative a quell'anno<br>
-  # </div>
+  # **Expects:**
+  # - `filtered_data_group_by_hour` (`Hash<Array>`) Consuntivi filtrati raggraupati per ora
+  # - `previsione_up` (`Hash<Array>`) contiene tutte le curve suddivise per stazione che sono sopra la mia previsione
+  # - `previsione_down` (`Hash<Array>`) contiene tutte le curve suddivise per stazione che sono sotto la mia previsione
+  # - `data` (`String`) Contiene data e ora del forecast da eseguire
+  #
+  # **Promises:**
+  # - `dispersione` (`Hash<Array>`) Mette in un hash la mia disperzione, nel quale ogni chiave e un anno, e i valori sono un array con tutti le curve relative a quell'anno
   #
   class Dispersione
     # @!parse

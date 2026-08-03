@@ -6,13 +6,11 @@ module ReportActions
   ##
   # Invia l'e-mail con allegato il report pdf
   #
-  # <div class="lsp">
-  #   <h2>Expects:</h2>
-  #   - html (String) html da inserire del body dell'e-mail<br>
-  #   - path_pdf_report (String) Path dove salvare il PDF<br>
-  #   - path_pdf_old_report (String) Path del pdf dell'ultimo report creato dal vecchio forecast<br>
-  #   - path_printscreen_scada (String) Path del printscreen di scada<br>
-  # </div>
+  # **Expects:**
+  # - `html` (`String`) html da inserire del body dell'e-mail
+  # - `path_pdf_report` (`String`) Path dove salvare il PDF
+  # - `path_pdf_old_report` (`String`) Path del pdf dell'ultimo report creato dal vecchio forecast
+  # - `path_printscreen_scada` (`String`) Path del printscreen di scada
   #
   class SendEmail
     # @!parse

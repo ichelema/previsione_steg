@@ -6,13 +6,12 @@ module ReportActions
   ##
   # Setto il path dove salvare il PDF
   #
-  # <div class="lsp">
-  #   <h2>Expects:</h2>
-  #   - path (String) Path dove salvare i PDF<br>
-  #   - data (String) Data del report<br>
-  #   <h2>Promises:</h2>
-  #   - path_pdf_report (String) Path dove salvare il PDF<br>
-  # </div>
+  # **Expects:**
+  # - `path` (`String`) Path dove salvare i PDF
+  # - `data` (`String`) Data del report
+  #
+  # **Promises:**
+  # - `path_pdf_report` (`String`) Path dove salvare il PDF
   #
   class SetPdfPath
     # @!parse

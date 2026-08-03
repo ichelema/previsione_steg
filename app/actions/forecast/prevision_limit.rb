@@ -5,15 +5,14 @@
 module ForecastActions
   # Genero gli estremi superiore e inferiore del mio forecast
   #
-  # <div class="lsp">
-  #   <h2>Expects:</h2>
-  #   - previsione (Hash(Array)) Mette in un hash la mia previsione ogni chiave dell'Hash è una stazione<br>
-  #   - filtered_data_group_by_hour (Hash(Array)) Consuntivi filtrati raggraupati per ora<br>
-  #   - data (String) Contiene data e ora del forecast da eseguire<br>
-  #   <h2>Promises:</h2>
-  #   - previsione_up (Hash(Array)) Mette in un hash la mia previsione ogni chiave dell'Hash è una stazione<br>
-  #   - previsione_down (Hash(Array)) Mette in un hash la mia previsione ogni chiave dell'Hash è una stazione<br>
-  # </div>
+  # **Expects:**
+  # - `previsione` (`Hash<Array>`) Mette in un hash la mia previsione ogni chiave dell'Hash è una stazione
+  # - `filtered_data_group_by_hour` (`Hash<Array>`) Consuntivi filtrati raggraupati per ora
+  # - `data` (`String`) Contiene data e ora del forecast da eseguire
+  #
+  # **Promises:**
+  # - `previsione_up` (`Hash<Array>`) Mette in un hash la mia previsione ogni chiave dell'Hash è una stazione
+  # - `previsione_down` (`Hash<Array>`) Mette in un hash la mia previsione ogni chiave dell'Hash è una stazione
   #
   class PrevisionLimit
     # @!parse

@@ -6,15 +6,13 @@ module ForecastActions
   ##
   # Compila in il file Forecast,xlsm con la mia previsone
   #
-  # <div class="lsp">
-  #   <h2>Expects:</h2>
-  #   - previsione (Hash(Array)) Mette in un hash la mia previsione ogni chiave dell'Hash è una stazione<br>
-  #   - previsione_up (Hash(Array)) Mette in un hash la mia previsione ogni chiave dell'Hash è una stazione<br>
-  #   - previsione_down (Hash(Array)) Mette in un hash la mia previsione ogni chiave dell'Hash è una stazione<br>
-  #   - dispersione (Hash(Array)) Mette in un hash la mia disperzione, nel quale ogni chiave e un anno, e i valoru sono un array con tutti le curve relative a quell'anno<br>
-  #   - daily_evolution (Hash) contiene previsione corrente<br>
-  #   - workbook (WIN32OLE)<br>
-  # </div>
+  # **Expects:**
+  # - `previsione` (`Hash<Array>`) Mette in un hash la mia previsione ogni chiave dell'Hash è una stazione
+  # - `previsione_up` (`Hash<Array>`) Mette in un hash la mia previsione ogni chiave dell'Hash è una stazione
+  # - `previsione_down` (`Hash<Array>`) Mette in un hash la mia previsione ogni chiave dell'Hash è una stazione
+  # - `dispersione` (`Hash<Array>`) Mette in un hash la mia disperzione, nel quale ogni chiave e un anno, e i valoru sono un array con tutti le curve relative a quell'anno
+  # - `daily_evolution` (`Hash`) contiene previsione corrente
+  # - `workbook` (`WIN32OLE`)
   #
   class CompilaForecastExcel
     # @!parse

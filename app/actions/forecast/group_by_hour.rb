@@ -5,12 +5,11 @@
 module ForecastActions
   # Raggruppo i consuntivi filtrati per ora
   #
-  # <div class="lsp">
-  #   <h2>Expects:</h2>
-  #   - filtered_data (FunctionalLightService::Result) Se finisce con successo (Array(Hash))<br>
-  #   <h2>Promises:</h2>
-  #   - filtered_data_group_by_hour (Hash(Array)) Consuntivi filtrati raggraupati per ora<br>
-  # </div>
+  # **Expects:**
+  # - `filtered_data` (`FunctionalLightService::Result`) Se finisce con successo (`Array<Hash>`)
+  #
+  # **Promises:**
+  # - `filtered_data_group_by_hour` (`Hash<Array>`) Consuntivi filtrati raggraupati per ora
   #
   class GroupByHour
     # @!parse
