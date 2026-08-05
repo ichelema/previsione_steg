@@ -35,6 +35,7 @@ GEM
     functional-light-service (0.3.4)
       dry-inflector (>= 0.2.0)
       i18n (>= 1.8.2)
+    github-markup (6.0.0)
     gli (2.22.2)
       ostruct
     hamster (3.0.0)
@@ -201,6 +202,7 @@ DEPENDENCIES
   ffi (~> 1.17.4)
   fiddle (~> 1.1.8)
   functional-light-service (~> 0.3.2)
+  github-markup
   gli (~> 2.22.2)
   hamster (~> 3.0.0)
   hirb (~> 0.7.3)
@@ -243,6 +245,7 @@ CHECKSUMS
   fiddle (1.1.8) sha256=7fa8ee3627271497f3add5503acdbc3f40b32f610fc1cf49634f083ef3f32eee
   fugit (1.13.0) sha256=a4f093fce740da52f216740a5041e2a594ea763cdb89e8b2754ca4399634ab18
   functional-light-service (0.3.4) sha256=578bcfc7c0b7e6f951770ff241b0da18a4160dbf6925a2b0f8c7070841e47187
+  github-markup (6.0.0)
   gli (2.22.2) sha256=580e8d6c88b0f0f0cb8e8b2ca18c3485ed0f742cece855de46bf8e36202f5db0
   hamster (3.0.0) sha256=5951e3a3ffd15ba854a976ac36ebae9469966f726034ffed0dccdb6d12d434d8
   highline (3.0.1) sha256=ca18b218fd581b1fae832f89bfeaf2b34d3a93429c44fd4411042ffce286f009
