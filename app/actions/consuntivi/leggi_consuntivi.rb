@@ -5,30 +5,17 @@
 module ConsuntiviActions
   ##
   # Legge i consuntivi che ha scaricato via FTP da scada
-  #
-  # **Promises:**
-  # - `consuntivi` (`Array`) consuntivi di Steg letti dai file scaricati via FTP
-  #
-  #
   class LeggiConsuntivi
     # @!parse
-    #   extend FunctionalLightService::Action
     #   extend ForecastConcern::Excel
     extend FunctionalLightService::Action
+
     @@first_row = nil
     @@last_row = nil
 
+    # @promises consuntivi [Array] consuntivi di Steg letti dai file scaricati via FTP
     promises :consuntivi
 
-    # @!method LeggiConsuntivi(ctx)
-    #
-    #   @!scope class
-    #
-    #   @param ctx [FunctionalLightService::Context]
-    #
-    #   @promises consuntivi [Array] consuntivi di Steg letti dai file scaricati via FTP
-    #
-    #   @return [FunctionalLightService::Context, FunctionalLightService::Context.fail_and_return!]
     executed do |ctx|
       try! do
         ctx.consuntivi = nil

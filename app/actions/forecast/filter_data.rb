@@ -6,58 +6,41 @@ module ForecastActions
   ##
   # Filtro i consuntivi letti dal DB in base ai filtri impostati nell'Excel
   #
-  # **Expects:**
-  # - `consuntivi` (`Array<Hash>`) Consuntivi di Steg letti dal DB
-  # - `params` (`Array<Hash>`) Parametri letti da excel
-  #
-  # **Promises:**
-  #   - filtered_data (FunctionalLightService::Result) Se finisce con successo (Array(Hash))
-  #
+  # @example promises filtered_data value
+  #     [
+  #        [0] {
+  #         "Date"            => #<DateTime: 2015-10-20T08:00:00+00:00 ((2457316j,28800s,0n),+0s,2299161j)>,
+  #         "Giorno"          => 20,
+  #         "Mese"            => 10,
+  #         "Anno"            => 2015,
+  #         "Ora"             => 8,
+  #         "Giorno_Sett_Num" => 2,
+  #         "Festivo"         => "N",
+  #         "Festivita"       => "N",
+  #         "Stagione"        => "autunno",
+  #         "Exclude"         => "N",
+  #         "Peso"            => 1.0,
+  #         "Flow_Feriana"    => 70.0,
+  #         "Flow_Kasserine"  => 1.0,
+  #         "Flow_Zriba"      => 256.0,
+  #         "Flow_Nabeul"     => 49.0,
+  #         "Flow_Korba"      => 7.0,
+  #         "Flow_Totale"     => 9235.0
+  #       }
+  #     ]
   class FilterData
     # @!parse
-    #   extend FunctionalLightService::Action
-    #   extend ForecastConcern::Excal
+    #   extend ForecastConcern::Excel
     extend FunctionalLightService::Action
 
-    expects :consuntivi, :params
+    # @expects consuntivi [Array<Hash>] Consuntivi di Steg letti dal DB
+    expects :consuntivi
+    # @expects params [Hamster::Hash] parametri letti da excel
+    expects :params
+    # @promises filtered_data [FunctionalLightService::Result<Array<Hash>>] `Success` con i consuntivi filtrati; in caso di `Failure` la pipeline si ferma qui
     promises :filtered_data
 
-    # @!method FilterData(ctx)
-    #
-    #   @!scope class
-    #
-    #   @param ctx [FunctionalLightService::Context]
-    #
-    #   @expects consuntivi [Array<Hash>] Consuntivi di Steg letti dal DB
-    #   @expects params [Hamster::Hash] parametri letti da excel
-    #
-    #   @promises filtered_data [FunctionalLightService::Result] Se finisce con successo [Array<Hash>]
-    #
-    #   @example promises filtered_data value
-    #       [
-    #          [0] {
-    #           "Date"            => #<DateTime: 2015-10-20T08:00:00+00:00 ((2457316j,28800s,0n),+0s,2299161j)>,
-    #           "Giorno"          => 20,
-    #           "Mese"            => 10,
-    #           "Anno"            => 2015,
-    #           "Ora"             => 8,
-    #           "Giorno_Sett_Num" => 2,
-    #           "Festivo"         => "N",
-    #           "Festivita"       => "N",
-    #           "Stagione"        => "autunno",
-    #           "Exclude"         => "N",
-    #           "Peso"            => 1.0,
-    #           "Flow_Feriana"    => 70.0,
-    #           "Flow_Kasserine"  => 1.0,
-    #           "Flow_Zriba"      => 256.0,
-    #           "Flow_Nabeul"     => 49.0,
-    #           "Flow_Korba"      => 7.0,
-    #           "Flow_Totale"     => 9235.0
-    #         }
-    #       ]
-    #
-    #   @return [FunctionalLightService::Context]
-    ted do |ctx|
+    executed do |ctx|
       ctx.filtered_data = Success(ctx.consuntivi) \
                      >> method(:filter_giorno) \
                      >> method(:filter_festivo) \

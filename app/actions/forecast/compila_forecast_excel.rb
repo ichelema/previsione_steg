@@ -5,42 +5,22 @@
 module ForecastActions
   ##
   # Compila in il file Forecast,xlsm con la mia previsone
-  #
-  # **Expects:**
-  # - `previsione` (`Hash<Array>`) Mette in un hash la mia previsione ogni chiave dell'Hash è una stazione
-  # - `previsione_up` (`Hash<Array>`) Mette in un hash la mia previsione ogni chiave dell'Hash è una stazione
-  # - `previsione_down` (`Hash<Array>`) Mette in un hash la mia previsione ogni chiave dell'Hash è una stazione
-  # - `dispersione` (`Hash<Array>`) Mette in un hash la mia disperzione, nel quale ogni chiave e un anno, e i valoru sono un array con tutti le curve relative a quell'anno
-  # - `daily_evolution` (`Hash`) contiene previsione corrente
-  # - `workbook` (`WIN32OLE`)
-  #
   class CompilaForecastExcel
-    # @!parse
-    #   extend FunctionalLightService::Action
     extend FunctionalLightService::Action
 
-    expects \
-      :previsione,
-      :previsione_up,
-      :previsione_down,
-      :dispersione,
-      :daily_evolution,
-      :workbook
+    # @expects previsione [Hash<Array>] la mia previsione ogni chiave dell'Hash è una stazione
+    expects :previsione
+    # @expects previsione_up [Hash<Array>] contiene tutte le curve suddivise per stazione che sono sopra la mia previsione
+    expects :previsione_up
+    # @expects previsione_down [Hash<Array>] contiene tutte le curve suddivise per stazione che sono sotto la mia previsione
+    expects :previsione_down
+    # @expects dispersione [Hash<Array>] hash della disperzione, nel quale ogni chiave e un anno, e i valori sono un array con tutti le curve relative a quell'anno
+    expects :dispersione
+    # @expects daily_evolution [Hash] Previsione corrente
+    expects :daily_evolution
+    # @expects workbook [WIN32OLE] file excel del mio forecast
+    expects :workbook
 
-    # @!method CompilaForecastExcel(ctx)
-    #
-    #   @!scope class
-    #
-    #   @param ctx [FunctionalLightService::Context]
-    #
-    #   @expects previsione [Hash<Array>] la mia previsione ogni chiave dell'Hash è una stazione
-    #   @expects previsione_up [Hash<Array>] contiene tutte le curve suddivise per stazione che sono sopra la mia previsione
-    #   @expects previsione_down [Hash<Array>] contiene tutte le curve suddivise per stazione che sono sotto la mia previsione
-    #   @expects dispersione [Hash<Array>] hash della disperzione, nel quale ogni chiave e un anno, e i valori sono un array con tutti le curve relative a quell'anno
-    #   @expects daily_evolution [Hash] Previsione corrente
-    #   @expects workbook [WIN32OLE] file excel del mio forecast
-    #
-    #   @return [FunctionalLightService::Context, FunctionalLightService::Context.fail_and_return!]
     executed do |ctx|
       screen_updating(false)
       calculation(ExcelConst::XlManual)

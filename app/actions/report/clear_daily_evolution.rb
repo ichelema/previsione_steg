@@ -5,20 +5,11 @@
 module ReportActions
   ##
   # Pulisco la tabella daily evolution del forecast
-  #
   class ClearDailyEvolution
     # @!parse
-    #   extend FunctionalLightService::Action
     #   extend ForecastConcern::Excel
     extend FunctionalLightService::Action
 
-    # @!method ClearDailyEvolution(ctx)
-    #
-    #   @!scope class
-    #
-    #   @param ctx [FunctionalLightService::Context]
-    #
-    #   @return [FunctionalLightService::Context, FunctionalLightService::Context.fail_and_return!]
     executed do |ctx|
       try! do
         clear_daily_evolution

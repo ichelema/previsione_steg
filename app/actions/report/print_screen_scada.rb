@@ -5,26 +5,12 @@
 module ReportActions
   ##
   # Faccio il printscreen di scada
-  #
-  # **Promises:**
-  # - `path_printscreen_scada` (`String`) Path del printscreen di scada
-  #
   class PrintScreenScada
-    # @!parse
-    #   extend FunctionalLightService::Action
     extend FunctionalLightService::Action
 
+    # @promises path_printscreen_scada [String] Path del printscreen di scada
     promises :path_printscreen_scada
 
-    # @!method PathPdfOldForecast(ctx)
-    #
-    #   @!scope class
-    #
-    #   @param ctx [FunctionalLightService::Context]
-    #
-    #   @promises path_printscreen_scada [String] Path del printscreen di scada
-    #
-    #   @return [FunctionalLightService::Context, FunctionalLightService::Context.fail_and_return!]
     executed do |ctx|
       try! do
         # ctx.path_pdf_old_report = nil

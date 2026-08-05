@@ -5,34 +5,16 @@
 module ReportActions
   ##
   # Setto il path dove salvare il PDF
-  #
-  # **Expects:**
-  # - `path` (`String`) Path dove salvare i PDF
-  # - `data` (`String`) Data del report
-  #
-  # **Promises:**
-  # - `path_pdf_report` (`String`) Path dove salvare il PDF
-  #
   class SetPdfPath
-    # @!parse
-    #   extend FunctionalLightService::Action
     extend FunctionalLightService::Action
 
-    expects :path, :data
+    # @expects path [String] Path dove salvare i PDF
+    expects :path
+    # @expects data [String] Data del report
+    expects :data
+    # @promises path_pdf_report [String] Path dove salvare il PDF
     promises :path_pdf_report
 
-    # @!method SetPdfPath(ctx)
-    #
-    #   @!scope class
-    #
-    #   @param ctx [FunctionalLightService::Context]
-    #
-    #   @expects path [String] Path dove salvare i PDF
-    #   @expects data [String] Data del report
-    #
-    #   @promises path_pdf_report [String] Path dove salvare il PDF
-    #
-    #   @return [FunctionalLightService::Context, FunctionalLightService::Context.fail_and_return!]
     executed do |ctx|
       try! do
         ctx.path_pdf_report = nil

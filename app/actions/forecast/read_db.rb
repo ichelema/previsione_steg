@@ -6,53 +6,38 @@ module ForecastActions
   ##
   # Prendo dal db tutti i dati consuntivi
   #
-  # **Promises:**
-  # - `consuntivi` (`Array<Hash>`) Consuntivi di Steg
+  # @note Scarta le righe con Exclude == "Y" o con Flow_Korba vuoto
   #
-  # **Expects:**
-  # - `excel` (`WIN32OLE`)
-  #
+  # @example promises consuntivi value
+  #     [
+  #        [0] {
+  #         "Date"            => #<DateTime: 2015-10-20T08:00:00+00:00 ((2457316j,28800s,0n),+0s,2299161j)>,
+  #         "Giorno"          => 20,
+  #         "Mese"            => 10,
+  #         "Anno"            => 2015,
+  #         "Ora"             => 8.0,
+  #         "Giorno_Sett_Num" => 2,
+  #         "Festivo"         => "N",
+  #         "Festivita"       => "N",
+  #         "Stagione"        => "autunno",
+  #         "Exclude"         => "N",
+  #         "Peso"            => 1.0,
+  #         "Flow_Feriana"    => 70.0,
+  #         "Flow_Kasserine"  => 1.0,
+  #         "Flow_Zriba"      => 256.0,
+  #         "Flow_Nabeul"     => 49.0,
+  #         "Flow_Korba"      => 7.0,
+  #         "Flow_Totale"     => 9235.0
+  #       }
+  #     ]
   class ReadDb
-    # @!parse
-    #   extend FunctionalLightService::Action
     extend FunctionalLightService::Action
 
+    # @promises consuntivi [Array<Hash>] Consuntivi di Steg
     promises :consuntivi
+    # @expects excel [WIN32OLE]
     expects :excel
 
-    # @!method ReadDb(ctx)
-    #
-    #   @!scope class
-    #
-    #   @param ctx [FunctionalLightService::Context]
-    #
-    #   @promises consuntivi [Array<Hash>] Consuntivi di Steg
-    #
-    #   @expects excel [WIN32OLE]
-    #
-    #   @example promises consuntivi value
-    #       [
-    #          [0] {
-    #           "Date"            => #<DateTime: 2015-10-20T08:00:00+00:00 ((2457316j,28800s,0n),+0s,2299161j)>,
-    #           "Giorno"          => 20,
-    #           "Mese"            => 10,
-    #           "Anno"            => 2015,
-    #           "Ora"             => 8.0,
-    #           "Giorno_Sett_Num" => 2,
-    #           "Festivo"         => "N",
-    #           "Festivita"       => "N",
-    #           "Stagione"        => "autunno",
-    #           "Exclude"         => "N",
-    #           "Peso"            => 1.0,
-    #           "Flow_Feriana"    => 70.0,
-    #           "Flow_Kasserine"  => 1.0,
-    #           "Flow_Zriba"      => 256.0,
-    #           "Flow_Nabeul"     => 49.0,
-    #           "Flow_Korba"      => 7.0,
-    #           "Flow_Totale"     => 9235.0
-    #         }
-    #       ]
-    #   @return [FunctionalLightService::Context, FunctionalLightService::Context.fail_and_return!]
     executed do |ctx|
       try! do
         workbook = ctx.excel.Workbooks(Ikigai::Config.file.db2_xls)

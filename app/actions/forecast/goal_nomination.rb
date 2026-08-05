@@ -4,20 +4,11 @@
 
 module ForecastActions
   # Avvia la macro che trova la miglior nomina di STEG
-  #
   class GoalNomination
     # @!parse
-    #   extend FunctionalLightService::Action
     #   extend ForecastConcern::Excel
     extend FunctionalLightService::Action
 
-    # @!method GoalNomination(ctx)
-    #
-    #   @!scope class
-    #
-    #   @param ctx [FunctionalLightService::Context]
-    #
-    #   @return [FunctionalLightService::Context, FunctionalLightService::Context.fail_and_return!]
     executed do |ctx|
       feedback = run_goal_macro
       unless feedback

@@ -5,27 +5,14 @@
 module ConsuntiviActions
   ##
   # Scrivi i consuntivi letti del file del DB
-  #
-  # **Expects:**
-  # - `consuntivi` (`Array`) consuntivi di Steg letti dai file scaricati via FTP
-  #
   class ScriviConsuntivi
     # @!parse
-    #   extend FunctionalLightService::Action
     #   extend ForecastConcern::Excel
     extend FunctionalLightService::Action
 
+    # @expects consuntivi [Array] consuntivi di Steg letti dai file scaricati via FTP
     expects :consuntivi
 
-    # @!method DownloadConsuntivi(ctx)
-    #
-    #   @!scope class
-    #
-    #   @param ctx [FunctionalLightService::Context]
-    #
-    #   @expects consuntivi [Array] consuntivi di Steg letti dai file scaricati via FTP
-    #
-    #   @return [FunctionalLightService::Context, FunctionalLightService::Context.fail_and_return!]
     executed do |ctx|
       try! do
         first_row = worksheets("DB").Range("B4").end(-4121).row + 1

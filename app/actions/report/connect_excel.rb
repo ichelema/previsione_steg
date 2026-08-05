@@ -5,29 +5,16 @@
 module ReportActions
   ##
   # Mi connetto al file Excel del forecast
-  #
-  # **Promises:**
-  # - `excel` (`WIN32OLE`)
-  # - `workbook` (`WIN32OLE`)
-  #
   class ConnectExcel
     # @!parse
-    #   extend FunctionalLightService::Action
     #   extend ForecastConcern::Excel
     extend FunctionalLightService::Action
 
-    promises :excel, :workbook
+    # @promises excel [WIN32OLE]
+    promises :excel
+    # @promises workbook [WIN32OLE]
+    promises :workbook
 
-    # @!method ConnectExcel(ctx)
-    #
-    #   @!scope class
-    #
-    #   @param ctx [FunctionalLightService::Context]
-    #
-    #   @promises excel [WIN32OLE]
-    #   @promises workbook [WIN32OLE]
-    #
-    #   @return [FunctionalLightService::Context, FunctionalLightService::Context.fail_and_return!]
     executed do |ctx|
       try! do
         ctx.excel = conneti_excel.freeze

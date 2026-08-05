@@ -5,27 +5,14 @@
 module ForecastActions
   ##
   # Prendo da excel tutti i dati di input per eseguire il Forecast
-  #
-  # **Promises:**
-  # - `params` (`Hash`) parametri letti da excel per eseguire il forecast
-  #
   class GetExcelParams
     # @!parse
-    #   extend FunctionalLightService::Action
     #   extend ForecastConcern::Excel
     extend FunctionalLightService::Action
 
+    # @promises params [Hash] parametri letti da excel per eseguire il forecast
     promises :params
 
-    # @!method GetExcelParams(ctx)
-    #
-    #   @!scope class
-    #
-    #   @param ctx [FunctionalLightService::Context]
-    #
-    #   @promises params [Hash] parametri letti da excel per eseguire il forecast
-    #
-    #   @return [FunctionalLightService::Context]
     executed do |ctx|
       ctx.params = Hamster::Hash[
         day: get_day,

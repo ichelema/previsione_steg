@@ -5,25 +5,11 @@
 module ShareActions
   ##
   # Refresha i collegamenti del file Excel forecast
-  #
-  # **Expects:**
-  # - `excel` (`WIN32OLE`)
-  #
   class RefreshLinks
     # @!parse
-    #   extend FunctionalLightService::Action
     #   extend ForecastConcern::Excel
     extend FunctionalLightService::Action
 
-    # @!method RefreshLinks(ctx)
-    #
-    #   @!scope class
-    #
-    #   @param ctx [FunctionalLightService::Context]
-    #
-    #   @expects excel [WIN32OLE]
-    #
-    #   @return [FunctionalLightService::Context, FunctionalLightService::Context.fail_and_return!]
     executed do |ctx|
       try! do
         workbook_forecast = ctx.excel.Workbooks(Ikigai::Config.file.excel_forecast)

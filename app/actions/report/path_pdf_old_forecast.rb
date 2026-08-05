@@ -5,26 +5,14 @@
 module ReportActions
   ##
   # Setto il path dove prendere il PDF del vecchio forecast
-  #
-  # **Promises:**
-  # - `path_pdf_old_report` (`String`) Path del pdf dell'ultimo report creato dal vecchio forecast
-  #
   class PathPdfOldForecast
-    # @!parse
-    #   extend FunctionalLightService::Action
     extend FunctionalLightService::Action
 
-    promises :path_pdf_old_report, :path_pdf_old_report
+    # @promises path_pdf_old_report [String] Path del pdf dell'ultimo report creato dal vecchio forecast
+    promises :path_pdf_old_report
+    # @promises path_pdf_old_report [String] Path del pdf dell'ultimo report creato dal vecchio forecast
+    promises :path_pdf_old_report
 
-    # @!method PathPdfOldForecast(ctx)
-    #
-    #   @!scope class
-    #
-    #   @param ctx [FunctionalLightService::Context]
-    #
-    #   @promises path_pdf_old_report [String] Path del pdf dell'ultimo report creato dal vecchio forecast
-    #
-    #   @return [FunctionalLightService::Context, FunctionalLightService::Context.fail_and_return!]
     executed do |ctx|
       try! do
         ctx.path_pdf_old_report = nil

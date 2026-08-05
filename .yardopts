@@ -1,5 +1,6 @@
 --title 'Previsione Steg'
 --charset utf-8
+-e yard-switchyard.rb
 --markup markdown
 --markup-provider redcarpet
 --template-path ./yard_templates
