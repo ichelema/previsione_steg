@@ -18,6 +18,8 @@ exclude:
 - ".yardoc/**/*"
 require:
 - "functional-light-service"
+plugins:
+- "./solargraph-switchyard"
 domains: []
 reporters:
 - rubocop
