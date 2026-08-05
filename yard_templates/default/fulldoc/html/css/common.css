@@ -11,3 +11,10 @@
 li {
   list-style-type: square;
 }
+
+/* Freccia del toggle degli esempi: lo style.css di YARD la contiene come
+   carattere UTF-8 grezzo e senza @charset alcuni browser (Edge) la decodificano
+   in Windows-1252 mostrando mojibake. Qui la ridefiniamo come escape ASCII. */
+.tags .examples .inline p:before {
+  content: "\25B8";
+}
