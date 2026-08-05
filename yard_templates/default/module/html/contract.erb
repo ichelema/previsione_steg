@@ -1,0 +1,20 @@
+<div id="contract">
+  <h2>Contract</h2>
+  <% [["Expects", @expects], ["Promises", @promises]].each do |title, tags| %>
+    <% next if tags.empty? %>
+    <p class="tag_title"><%= title %>:</p>
+    <ul class="contract <%= title.downcase %>">
+      <% tags.each do |tag| %>
+        <li>
+          <strong><%= h tag.name.to_s %></strong>
+          <% if tag.types && !tag.types.empty? %>
+            (<tt><%= h tag.types.join(", ") %></tt>)
+          <% end %>
+          <% unless tag.text.to_s.strip.empty? %>
+            &mdash; <%= htmlify_line tag.text %>
+          <% end %>
+        </li>
+      <% end %>
+    </ul>
+  <% end %>
+</div>
