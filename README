@@ -1,0 +1,64 @@
+# PrevisioneSteg
+
+Applicazione CLI per la previsione e il reporting dei consumi energetici STEG
+(Société Tunisienne de l'Électricité et du Gaz). Elabora i consuntivi storici,
+genera le previsioni con medie ponderate e produce report PDF inviati via email.
+
+Versione: vedi file `VERSION` — changelog in `CHANGELOG.md`.
+
+## Requisiti
+
+- Windows (automazione Excel via WIN32OLE)
+- Ruby >= 4.0.1 (gestito con mise, vedi `mise.toml`)
+- `bundle install` per le dipendenze
+
+## Comandi principali
+
+```bash
+# Previsione
+ruby steg.rb --log=info --interface=cli --enviroment=production forecast --dt 10/04/2021 --H 10
+
+# Report (forecast o consuntivo)
+ruby steg.rb --log=info --interface=cli --enviroment=production report --type=forecast --dt 10/04/2021 -H 08
+
+# Scarico ed elaborazione consuntivi
+ruby steg.rb --log=info --interface=cli --enviroment=production consuntivi
+
+# Scheduler (consuntivi alle 9:20, forecast ogni ora 10-23)
+ruby scheduler.rb --enviroment=production
+```
+
+## Architettura in breve
+
+Pipeline in stile railway con functional-light-service: i controller
+(`app/controllers/`) sono organizer che riducono una lista di `steps`;
+ogni step è una action (`app/actions/`) con contratto esplicito
+`expects`/`promises` documentato con tag YARD sopra la DSL:
+
+```ruby
+# @expects consuntivi [Array<Hash>] Consuntivi letti dal DB
+expects :consuntivi
+```
+
+La guida completa per lo sviluppo è in `CLAUDE.md`.
+
+## Documentazione
+
+```bash
+bundle exec yardoc                            # genera i doc in doc/
+bundle exec yard server -t ./yard_templates   # server locale su :8808
+```
+
+Il contratto delle action è renderizzato dal tooling custom:
+
+- `yard-switchyard.rb` — plugin YARD: sezione "Contract" nella pagina di ogni action
+- `solargraph-switchyard.rb` — convention Solargraph: contratto nell'hover LSP
+  (caricata da `.solargraph.yml`)
+- `yard_templates/` — template custom (sezione Contract, css)
+
+## Qualità
+
+```bash
+bundle exec rubocop            # lint (standard style)
+bundle exec rufo -i app/       # format
+```
