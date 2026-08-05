@@ -5,19 +5,9 @@
 module ConsuntiviActions
   ##
   # Avvio lo scaricamento dei consuntivi dal FTP di scada
-  #
   class DownloadConsuntivi
-    # @!parse
-    #   extend FunctionalLightService::Action
     extend FunctionalLightService::Action
 
-    # @!method DownloadConsuntivi(ctx)
-    #
-    #   @!scope class
-    #
-    #   @param ctx [FunctionalLightService::Context]
-    #
-    #   @return [FunctionalLightService::Context, FunctionalLightService::Context.fail_and_return!]
     executed do |ctx|
       now = DateTime.now - 5
 

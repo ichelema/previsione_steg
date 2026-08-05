@@ -5,39 +5,21 @@
 module ForecastActions
   # Esegue la media ponderata dei dati filtrati nelo step precedente e crea la mia previsione
   #
-  # **Expects:**
-  # - `filtered_data_group_by_hour` (`Hash<Array>`) Consuntivi filtrati raggraupati per ora
-  #
-  # **Promises:**
-  # - `previsione` (`Hash<Array>`) Mette in un hash la mia previsione ogni chiave dell'Hash è una stazione
-  #
+  # @example previsione
+  #     {
+  #        "feriana":   [25513.70, 30426.73, 4513.70, 10426.73, ....],
+  #        "kasserine": [28513.70, 30426.73, 8513.70, 30426.73, ....],
+  #        "zriba":     [18513.70, 30426.73, 18513.70, 20426.73, ....],
+  #        "korba":     [38513.70, 30426.73, 58513.70, 10426.73, ....],
+  #     }
   class Previsione
-    # @!parse
-    #   extend FunctionalLightService::Action
     extend FunctionalLightService::Action
 
+    # @expects filtered_data_group_by_hour [Hash<Array>] Consuntivi filtrati raggraupati per ora
     expects :filtered_data_group_by_hour
+    # @promises previsione [Hash<Array>] Mette in un hash la mia previsione ogni chiave dell'Hash è una stazione
     promises :previsione
 
-    # @!method Previsione(ctx)
-    #
-    #   @!scope class
-    #
-    #   @param ctx [FunctionalLightService::Context]
-    #
-    #   @expects filtered_data_group_by_hour [Hash<Array>] Consuntivi filtrati raggraupati per ora
-    #
-    #   @promises previsione [Hash<Array>] Mette in un hash la mia previsione ogni chiave dell'Hash è una stazione
-    #
-    #   @example previsione
-    #       {
-    #          "feriana":   [25513.70, 30426.73, 4513.70, 10426.73, ....],
-    #          "kasserine": [28513.70, 30426.73, 8513.70, 30426.73, ....],
-    #          "zriba":     [18513.70, 30426.73, 18513.70, 20426.73, ....],
-    #          "korba":     [38513.70, 30426.73, 58513.70, 10426.73, ....],
-    #       }
-    #
-    #   @return [FunctionalLightService::Context, FunctionalLightService::Context.fail_and_return!]
     executed do |ctx|
       # creo un hash in cui ogni stazione ha un array vuoto
       # {

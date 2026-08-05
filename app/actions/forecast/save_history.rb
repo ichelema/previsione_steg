@@ -4,26 +4,12 @@
 
 module ForecastActions
   # Salvo nel database la previsione corrente
-  #
-  # **Expects:**
-  # - `daily_evolution` (`Hash`) contiene previsione corrente
-  #
   class SaveHistory
-    # @!parse
-    #   extend FunctionalLightService::Action
     extend FunctionalLightService::Action
 
+    # @expects daily_evolution [Hash] Previsione corrente
     expects :daily_evolution
 
-    # @!method SaveHistory(ctx)
-    #
-    #   @!scope class
-    #
-    #   @param ctx [FunctionalLightService::Context]
-    #
-    #   @expects daily_evolution [Hash] Previsione corrente
-    #
-    #   @return [FunctionalLightService::Context, FunctionalLightService::Context.fail_and_return!]
     executed do |ctx|
       try! do
         # @TODO: vedere se rimuovere o usarla nel caso in cui voglio usare un DB diverso da sqlite

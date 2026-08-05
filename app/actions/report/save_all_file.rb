@@ -5,20 +5,11 @@
 module ReportActions
   ##
   # Salvo i file Forecast.xlsm | Db.xlsm | DB2.xlsm se il report che sto generando è un consuntivo
-  #
   class SaveAllFile
     # @!parse
-    #   extend FunctionalLightService::Action
     #   extend ForecastConcern::Excel
     extend FunctionalLightService::Action
 
-    # @!method SaveAllFile(ctx)
-    #
-    #   @!scope class
-    #
-    #   @param ctx [FunctionalLightService::Context]
-    #
-    #   @return [FunctionalLightService::Context, FunctionalLightService::Context.fail_and_return!]
     executed do |ctx|
       save("DB.xlsm")
       save("DB2.xlsm")

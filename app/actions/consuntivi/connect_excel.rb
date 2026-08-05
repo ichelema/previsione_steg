@@ -5,30 +5,16 @@
 module ConsuntiviActions
   ##
   # Mi connetto al file Excel del db
-  #
-  # **Promises:**
-  # - `excel` (`WIN32OLE`)
-  # - `workbook` (`WIN32OLE`)
-  #
   class ConnectExcel
     # @!parse
-    #   extend FunctionalLightService::Action
     #   extend ForecastConcern::Excel
     extend FunctionalLightService::Action
 
     # @promises excel [WIN32OLE]
+    promises :excel
     # @promises workbook [WIN32OLE]
-    promises :excel, :workbook
-    # @!method ConnectExcel(ctx)
-    #
-    #   @!scope class
-    #
-    #   @param ctx [FunctionalLightService::Context]
-    #
-    #   @promises excel [WIN32OLE]
-    #   @promises workbook [WIN32OLE]
-    #
-    #   @return [FunctionalLightService::Context, FunctionalLightService::Context.fail_and_return!]
+    promises :workbook
+
     executed do |ctx|
       try! do
         # @type [WIN32OLE]

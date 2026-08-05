@@ -5,27 +5,14 @@
 module ShareActions
   ##
   # Setta nel file excel la data e la salva nella variabile data
-  #
-  # **Promises:**
-  # - `data` (`String`) Contiene data e ora del forecast da eseguire
-  #
   class SetExcelDay
     # @!parse
-    #   extend FunctionalLightService::Action
     #   extend ForecastConcern::Excel
     extend FunctionalLightService::Action
 
+    # @promises data [String] Contiene data e ora del forecast da eseguire
     promises :data
 
-    # @!method SetExcelDay(ctx)
-    #
-    #   @!scope class
-    #
-    #   @param ctx [FunctionalLightService::Context]
-    #
-    #   @promises data [String] Contiene data e ora del forecast da eseguire
-    #
-    #   @return [FunctionalLightService::Context, FunctionalLightService::Context.fail_and_return!]
     executed do |ctx|
       ctx.data = nil
       # @type [String]

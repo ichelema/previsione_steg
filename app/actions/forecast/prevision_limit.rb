@@ -5,52 +5,35 @@
 module ForecastActions
   # Genero gli estremi superiore e inferiore del mio forecast
   #
-  # **Expects:**
-  # - `previsione` (`Hash<Array>`) Mette in un hash la mia previsione ogni chiave dell'Hash è una stazione
-  # - `filtered_data_group_by_hour` (`Hash<Array>`) Consuntivi filtrati raggraupati per ora
-  # - `data` (`String`) Contiene data e ora del forecast da eseguire
+  # @example previsione_up
+  #     {
+  #        "feriana":   [25513.70, 30426.73, 4513.70, 10426.73, ....],
+  #        "kasserine": [28513.70, 30426.73, 8513.70, 30426.73, ....],
+  #        "zriba":     [18513.70, 30426.73, 18513.70, 20426.73, ....],
+  #        "korba":     [38513.70, 30426.73, 58513.70, 10426.73, ....],
+  #     }
   #
-  # **Promises:**
-  # - `previsione_up` (`Hash<Array>`) Mette in un hash la mia previsione ogni chiave dell'Hash è una stazione
-  # - `previsione_down` (`Hash<Array>`) Mette in un hash la mia previsione ogni chiave dell'Hash è una stazione
-  #
+  # @example previsione_down
+  #     {
+  #        "feriana":   [25513.70, 30426.73, 4513.70, 10426.73, ....],
+  #        "kasserine": [28513.70, 30426.73, 8513.70, 30426.73, ....],
+  #        "zriba":     [18513.70, 30426.73, 18513.70, 20426.73, ....],
+  #        "korba":     [38513.70, 30426.73, 58513.70, 10426.73, ....],
+  #     }
   class PrevisionLimit
-    # @!parse
-    #   extend FunctionalLightService::Action
     extend FunctionalLightService::Action
 
-    expects :previsione, :filtered_data_group_by_hour, :data
-    promises :previsione_up, :previsione_down
+    # @expects previsione [Hash<Array>] Mette in un hash la mia previsione ogni chiave dell'Hash è una stazione
+    expects :previsione
+    # @expects filtered_data_group_by_hour [Hash<Array>] Consuntivi filtrati raggraupati per ora
+    expects :filtered_data_group_by_hour
+    # @expects data [String] Contiene data e ora del forecast da eseguire
+    expects :data
+    # @promises previsione_up [Hash<Array>] Mette in un hash la mia previsione_up ogni chiave dell'Hash è una stazione
+    promises :previsione_up
+    # @promises previsione_down [Hash<Array>] Mette in un hash la mia previsione_down ogni chiave dell'Hash è una stazione
+    promises :previsione_down
 
-    # @!method Previsione(ctx)
-    #
-    #   @!scope class
-    #
-    #   @param ctx [FunctionalLightService::Context]
-    #
-    #   @expects previsione [Hash<Array>] Mette in un hash la mia previsione ogni chiave dell'Hash è una stazione
-    #   @expects filtered_data_group_by_hour [Hash<Array>] Consuntivi filtrati raggraupati per ora
-    #   @expects data [String] Contiene data e ora del forecast da eseguire
-    #
-    #   @promises previsione_up [Hash<Array>] Mette in un hash la mia previsione_up ogni chiave dell'Hash è una stazione
-    #   @promises previsione_down [Hash<Array>] Mette in un hash la mia previsione_down ogni chiave dell'Hash è una stazione
-    #
-    #   @example previsione_up
-    #       {
-    #          "feriana":   [25513.70, 30426.73, 4513.70, 10426.73, ....],
-    #          "kasserine": [28513.70, 30426.73, 8513.70, 30426.73, ....],
-    #          "zriba":     [18513.70, 30426.73, 18513.70, 20426.73, ....],
-    #          "korba":     [38513.70, 30426.73, 58513.70, 10426.73, ....],
-    #       }
-    #   @example previsione_down
-    #       {
-    #          "feriana":   [25513.70, 30426.73, 4513.70, 10426.73, ....],
-    #          "kasserine": [28513.70, 30426.73, 8513.70, 30426.73, ....],
-    #          "zriba":     [18513.70, 30426.73, 18513.70, 20426.73, ....],
-    #          "korba":     [38513.70, 30426.73, 58513.70, 10426.73, ....],
-    #       }
-    #
-    #   @return [FunctionalLightService::Context, FunctionalLightService::Context.fail_and_return!]
     executed do |ctx|
       try! do
         if ctx.data[/\s\d\d/].strip == "09"

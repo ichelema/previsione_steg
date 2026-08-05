@@ -5,33 +5,16 @@
 module ReportActions
   ##
   # Invia l'e-mail con allegato il report pdf
-  #
-  # **Expects:**
-  # - `html` (`String`) html da inserire del body dell'e-mail
-  # - `path_pdf_report` (`String`) Path dove salvare il PDF
-  # - `path_pdf_old_report` (`String`) Path del pdf dell'ultimo report creato dal vecchio forecast
-  # - `path_printscreen_scada` (`String`) Path del printscreen di scada
-  #
   class SendEmail
-    # @!parse
-    #   extend FunctionalLightService::Action
     extend FunctionalLightService::Action
 
     # expects :path_pdf_report, :path_pdf_old_report, :path_printscreen_scada, :html
-    expects :path_pdf_report, :html
 
-    # @!method SendEmail(ctx)
-    #
-    #   @!scope class
-    #
-    #   @param ctx [FunctionalLightService::Context]
-    #
-    #   @expects html [String] html da inserire del body dell'e-mail
-    #   @expects path_pdf_report [String] Path dove salvare il PDF
-    #   @expects path_pdf_old_report [String] Path del pdf dell'ultimo report creato dal vecchio forecast
-    #   @expects path_printscreen_scada [String] Path del printscreen di scada
-    #
-    #   @return [FunctionalLightService::Context, FunctionalLightService::Context.fail_and_return!]
+    # @expects path_pdf_report [String] Path dove salvare il PDF
+    expects :path_pdf_report
+    # @expects html [String] html da inserire del body dell'e-mail
+    expects :html
+
     executed do |ctx|
       try! do
         subject = "STEG #{type} GasDay #{day} #{date} #{time}"

@@ -5,27 +5,14 @@
 module ReportActions
   ##
   # Crea l'HTML da inserire nel body dell'e-mail
-  #
-  # **Promises:**
-  # - `html` (`String`) html da inserire del body dell'e-mail
-  #
   class MakeHtml
     # @!parse
-    #   extend FunctionalLightService::Action
     #   extend ForecastConcern::Excel
     extend FunctionalLightService::Action
 
+    # @promises html [String] html da inserire del body dell'e-mail
     promises :html
 
-    # @!method MakeHtml(ctx)
-    #
-    #   @!scope class
-    #
-    #   @param ctx [FunctionalLightService::Context]
-    #
-    #   @promises html [String] html da inserire del body dell'e-mail
-    #
-    #   @return [FunctionalLightService::Context, FunctionalLightService::Context.fail_and_return!]
     executed do |ctx|
       # rubocop:disable Layout/ExtraSpacing
       try! do

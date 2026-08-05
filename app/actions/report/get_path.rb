@@ -5,34 +5,14 @@
 module ReportActions
   ##
   # Setto il path della directory dove andare a salvare i PDF
-  #
-  # **Expects:**
-  # - `env` (`Hash`) Enviroment Application
-  #
-  # **Promises:**
-  # - `path` (`String`) Path dei file pdf
-  #
   class GetPath
-    # @!parse
-    #   extend FunctionalLightService::Action
     extend FunctionalLightService::Action
 
     # @expects env[Hash] Enviroment Application
-    # @promises path[String] Path dei file pdf
     expects :env
+    # @promises path[String] Path dei file pdf
     promises :path
 
-    # @!method GetPath(ctx)
-    #
-    #   @!scope class
-    #
-    #   @param ctx [FunctionalLightService::Context]
-    #
-    #   @expects env [Hash] Enviroment Application
-    #
-    #   @promises path [String] Path dei file pdf
-    #
-    #   @return [FunctionalLightService::Context, FunctionalLightService::Context.fail_and_return!]
     executed do |ctx|
       ctx.path = nil
       path = case ctx.env.dig(:command_options, :type)

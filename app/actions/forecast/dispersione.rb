@@ -5,46 +5,23 @@
 module ForecastActions
   # Calcolo la dispersione delle curve sugli anni, come si distribuiscono le curve sui vari anni
   #
-  # **Expects:**
-  # - `filtered_data_group_by_hour` (`Hash<Array>`) Consuntivi filtrati raggraupati per ora
-  # - `previsione_up` (`Hash<Array>`) contiene tutte le curve suddivise per stazione che sono sopra la mia previsione
-  # - `previsione_down` (`Hash<Array>`) contiene tutte le curve suddivise per stazione che sono sotto la mia previsione
-  # - `data` (`String`) Contiene data e ora del forecast da eseguire
-  #
-  # **Promises:**
-  # - `dispersione` (`Hash<Array>`) Mette in un hash la mia disperzione, nel quale ogni chiave e un anno, e i valori sono un array con tutti le curve relative a quell'anno
+  # @example dispersione
+  #   {2015 => [75000, 80000], 2016 => [8000, 445544], 2017 => [332432, 31243, 4324342], 2018 => [32314, 3243432] ... }
   #
   class Dispersione
-    # @!parse
-    #   extend FunctionalLightService::Action
     extend FunctionalLightService::Action
 
-    expects \
-      :filtered_data_group_by_hour,
-      :previsione_up,
-      :previsione_down,
-      :data
+    # @expects filtered_data_group_by_hour [Hash<Array>] Consuntivi filtrati raggraupati per ora
+    expects :filtered_data_group_by_hour
+    # @expects previsione_up [Hash<Array>] contiene tutte le curve suddivise per stazione che sono sopra la mia previsione
+    expects :previsione_up
+    # @expects previsione_down [Hash<Array>] contiene tutte le curve suddivise per stazione che sono sotto la mia previsione
+    expects :previsione_down
+    # @expects data [String] Contiene data e ora del forecast da eseguire
+    expects :data
+    # @promises dispersione [Hash<Array>] Mette in un hash la mia disperzione, nel quale ogni chiave e un anno, e i valori sono un array con tutti le curve relative a quell'anno
+    promises :dispersione
 
-    promises \
-      :dispersione
-
-    # @!method Dispersione(ctx)
-    #
-    #   @!scope class
-    #
-    #   @param ctx [FunctionalLightService::Context]
-    #
-    #   @expects filtered_data_group_by_hour [Hash<Array>] Consuntivi filtrati raggraupati per ora
-    #   @expects previsione_up [Hash<Array>] contiene tutte le curve suddivise per stazione che sono sopra la mia previsione
-    #   @expects previsione_down [Hash<Array>] contiene tutte le curve suddivise per stazione che sono sotto la mia previsione
-    #   @expects data [String] Contiene data e ora del forecast da eseguire
-    #
-    #   @promises dispersione [Hash<Array>] Mette in un hash la mia disperzione, nel quale ogni chiave e un anno, e i valori sono un array con tutti le curve relative a quell'anno
-    #
-    #   @example dispersione
-    #     {2015 => [75000, 80000], 2016 => [8000, 445544], 2017 => [332432, 31243, 4324342], 2018 => [32314, 3243432] ... }
-    #
-    #   @return [FunctionalLightService::Context, FunctionalLightService::Context.fail_and_return!]
     executed do |ctx|
       next ctx.dispersione = nil unless ctx.data[/\s\d\d/].strip == "09"
       try! do

@@ -5,34 +5,16 @@
 module ForecastActions
   ##
   # Prendo i valori della previsione corrente per copiarli nella tabella daily evolution del forecast
-  #
-  # **Expects:**
-  # - `workbook` (`WIN32OLE`)
-  #
-  # **Promises:**
-  # - `daily_evolution` (`Hash`) Previsione corrente
-  #
-  #
   class DailyEvolution
     # @!parse
-    #   extend FunctionalLightService::Action
     #   extend ForecastConcern::Excel
     extend FunctionalLightService::Action
 
+    #  @expects workbook [WIN32OLE]
     expects :workbook
+    # @promises daily_evolution [Hash] Previsione corrente
     promises :daily_evolution
 
-    # @!method DailyEvolution(ctx)
-    #
-    #   @!scope class
-    #
-    #   @param ctx [FunctionalLightService::Context]
-    #
-    #   @expects workbook [WIN32OLE]
-    #
-    #   @promises daily_evolution [Hash] Previsione corrente
-    #
-    #   @return [FunctionalLightService::Context, FunctionalLightService::Context.fail_and_return!]
     executed do |ctx|
       try! do
         ctx.workbook.sheets("Forecast").Activate
